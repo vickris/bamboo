@@ -8,7 +8,8 @@
 use Mix.Config
 
 config :bamboo_company,
-  ecto_repos: [BambooCompany.Repo]
+  ecto_repos: [BambooCompany.Repo],
+  polling_time: System.get_env("POLLING_TIME_IN_SECONDS", "5000")
 
 # Configures the endpoint
 config :bamboo_company, BambooCompanyWeb.Endpoint,

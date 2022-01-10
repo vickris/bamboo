@@ -14,9 +14,11 @@ defmodule BambooCompany.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: BambooCompany.PubSub},
       # Start the Endpoint (http/https)
-      BambooCompanyWeb.Endpoint
+      BambooCompanyWeb.Endpoint,
       # Start a worker by calling: BambooCompany.Worker.start_link(arg)
       # {BambooCompany.Worker, arg}
+      # Start the querying service
+      BambooCompany.QueryingService
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -4,8 +4,9 @@ defmodule BambooCompany.Companies.Company do
 
   schema "companies" do
     field :name, :string
-
     belongs_to :category, BambooCompany.Companies.Category
+
+    timestamps()
   end
 
   @doc false

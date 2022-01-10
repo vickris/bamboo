@@ -18,7 +18,7 @@ defmodule BambooCompany.Application do
       # Start a worker by calling: BambooCompany.Worker.start_link(arg)
       # {BambooCompany.Worker, arg}
       # Start the querying service
-      BambooCompany.QueryingService
+      # BambooCompany.QueryingService
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

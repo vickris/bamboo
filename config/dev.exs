@@ -4,7 +4,7 @@ use Mix.Config
 config :bamboo_company, BambooCompany.Repo,
   username: "postgres",
   password: "postgres",
-  database: "bamboo_company_dev",
+  database: "bamboo_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

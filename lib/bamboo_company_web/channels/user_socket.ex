@@ -2,7 +2,7 @@ defmodule BambooCompanyWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  channel "room:*", BambooCompanyWeb.ListingsChannel
+  channel "room:listings", BambooCompanyWeb.ListingsChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After

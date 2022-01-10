@@ -1,4 +1,4 @@
-defmodule BambooCompany.Repo.Migrations.CreateCategoryUser do
+defmodule BambooCompany.Repo.Migrations.AddCategoryUsersTable do
   use Ecto.Migration
 
   def change do

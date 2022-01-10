@@ -1,4 +1,9 @@
 defmodule BambooCompany.QueryingService do
+  @moduledoc """
+  Supervised service. Will start when the app starts if you uncomment
+  the BambooCompany.QueryingService on line 21 in application.ex
+  """
+
   use Task
   alias BambooCompany.Listings
 
@@ -6,7 +11,7 @@ defmodule BambooCompany.QueryingService do
     Task.start_link(__MODULE__, :poll, [])
   end
 
-  # Assumption is Am doing querying based off some timestamp value I have
+  # Assumption is am doing querying based off some timestamp value I have
   # Periodically.
   def poll() do
     receive do
@@ -20,7 +25,6 @@ defmodule BambooCompany.QueryingService do
             %{"company_name" => "company Z", "category" => "category X"},
           ]
           Listings.batch_insert(response)
-
           poll()
     end
   end

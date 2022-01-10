@@ -4,7 +4,7 @@ defmodule BambooCompanyWeb.ListingsChannel do
   use Phoenix.Channel
   require Logger
 
-  def join("room:listings", _message, socket) do
+  def join("listings:new", _message, socket) do
     {:ok, socket}
   end
 

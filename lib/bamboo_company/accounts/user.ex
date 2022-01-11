@@ -6,7 +6,7 @@ defmodule BambooCompany.Accounts.User do
     field :email, :string
     field :name, :string
     many_to_many :categories, BambooCompany.Companies.Category,
-      join_through: "category_user"
+      join_through: BambooCompany.Companies.CategoryUser
 
     timestamps()
   end

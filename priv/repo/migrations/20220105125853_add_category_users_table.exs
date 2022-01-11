@@ -5,6 +5,7 @@ defmodule BambooCompany.Repo.Migrations.AddCategoryUsersTable do
     create table(:category_user) do
       add :category_id, references(:categories)
       add :user_id, references(:users)
+
       timestamps()
     end
 

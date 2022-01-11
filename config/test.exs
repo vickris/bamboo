@@ -20,3 +20,7 @@ config :bamboo_company, BambooCompanyWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# Sending Emails only in DEV for now
+config :bamboo_company, BambooCompany.Emails.Mailer,
+  adapter: Bamboo.TestAdapter

@@ -30,10 +30,6 @@ config :bamboo_company, BambooCompanyWeb.Endpoint,
     ]
   ]
 
-# Sending Emails only in DEV for now
-config :bamboo_company, BambooCompany.Emails.Mailer,
-  adapter: Bamboo.LocalAdapter
-
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

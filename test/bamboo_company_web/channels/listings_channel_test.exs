@@ -14,9 +14,20 @@ defmodule BambooCompanyWeb.ListingsChannelTest do
     %{socket: socket}
   end
 
-  test "new listings broadcasts to new_listing", %{socket: socket} do
+  test "new listings trigger broadcasts to new_listing subscribers", %{socket: socket} do
     push socket, "new_listing", @body
     assert_broadcast "new_listing", _payload
+  end
+
+  test "new listings are added to the DB", %{socket: socket} do
+    initial_company_count = Repo.all(Company) |> Enum.count()
+    assert initial_company_count == 0
+
+    push socket, "new_listing", @body
+    assert_broadcast "new_listing", _payload
+
+    latest_company_count = Repo.all(Company) |> Enum.count()
+    assert latest_company_count == 1
   end
 
   test "broadcasts are pushed to the client", %{socket: socket} do

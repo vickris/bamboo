@@ -1,6 +1,10 @@
 defmodule BambooCompanyWeb.ListingsChannelTest do
   use BambooCompanyWeb.ChannelCase
+  alias BambooCompany.Repo
+  alias BambooCompany.Companies.Company
+
   @body %{"body" => %{"company_name" => "Some Name", "category" => "Some Category"}}
+
   setup do
     {:ok, _, socket} =
       BambooCompanyWeb.UserSocket

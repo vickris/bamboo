@@ -2,6 +2,8 @@ defmodule BambooCompany.Listings do
   alias BambooCompany.Repo
   alias BambooCompany.Companies.Company
   alias BambooCompany.Companies.Category
+  alias BambooCompany.EmailService
+  require Logger
 
   def insert_company(%{"company_name" => name, "category" => category_name}) do
     category = get_or_create_category(category_name);
@@ -18,9 +20,19 @@ defmodule BambooCompany.Listings do
     |> Enum.each(fn chunk ->
       chunk
       |> Enum.each(fn record ->
-        insert_company(record)
+        insert_into_db_and_broadcast(record)
       end)
     end)
+  end
+
+  # Should Probably go into a utils file somewhere
+  defp insert_into_db_and_broadcast(record) do
+    case insert_company(record) do
+      {:ok, company} ->
+        EmailService.send_email(company)
+        BambooCompanyWeb.Endpoint.broadcast!("listings:new", "new_listing", %{body: record})
+      {:error, changeset} -> Logger.info("Something went wrong during company creation. Supplied params #{inspect(changeset)}")
+    end
   end
 
   defp get_or_create_category(category_name) do

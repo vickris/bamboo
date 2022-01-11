@@ -5,6 +5,7 @@ defmodule BambooCompany.Listings do
   alias BambooCompany.EmailService
   require Logger
 
+  @spec insert_company(map) :: any
   def insert_company(%{"company_name" => name, "category" => category_name}) do
     category = get_or_create_category(category_name);
 

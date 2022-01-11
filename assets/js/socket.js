@@ -65,4 +65,8 @@ channel.join()
     channel.push("new_listing", {body: {company_name: "Company X", category: "Category X"}})
   });
 
+  channel.on("new_listing", payload => {
+    console.log(payload)
+  })
+
 export default socket
